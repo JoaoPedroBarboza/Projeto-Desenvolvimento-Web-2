@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Finanças - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Gestor de Finanças</h2>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 25px; font-size: 14px;">
+            Gerencie suas finanças de forma inteligente
+        </p>
+        <form id="loginForm">
+            <input type="text" id="username" name="username" placeholder="👤 Usuário" required>
+            <input type="password" id="password" name="password" placeholder="🔒 Senha" required>
+            <div class="checkbox-group">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="rememberMe">
+                    <span class="checkmark"></span>
+                    Lembrar usuário
+                </label>
+            </div>
+            <button type="submit">Entrar no Sistema</button>
+        </form>
+        <p id="error-message"></p>
+        <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #95a5a6;">
+            © 2025 Gestor de Finanças - Gestão Financeira Pessoal
+        </div>
+    </div>
+
+    <script src="js/login-ck.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Gestor de Finanças - Gestão Financeira</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+   <div class="page-container">
+      <a href="../dashboard.php" class="back-btn">← Voltar ao Dashboard</a>
+
+      <div class="page-header">
+         <h1>📊 Gestão Financeira</h1>
+         <p style="color: #7f8c8d; margin-top: 5px;">
+            Controle suas receitas e despesas de forma organizada
+         </p>
+      </div>
+
+      <div class="form-container">
+         <h3 style="margin-bottom: 20px; color: #2c3e50;">
+            <span id="form-title">Nova Transação</span>
+         </h3>
+         <form id="transactionForm">
+            <input type="hidden" id="transactionId">
+            <div class="form-grid">
+               <div class="form-group">
+                  <label for="descricao">Descrição:</label>
+                  <input type="text" id="descricao" placeholder="Ex: Compra supermercado" required>
+               </div>
+               <div class="form-group">
+                  <label for="valor">Valor (R$):</label>
+                  <input type="number" id="valor" step="0.01" placeholder="0,00" required>
+               </div>
+               <div class="form-group">
+                  <label for="tipo">Tipo:</label>
+                  <select id="tipo" required>
+                     <option value="">Selecione...</option>
+                     <option value="receita">💰 Receita</option>
+                     <option value="despesa">💸 Despesa</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="categoria">Categoria:</label>
+                  <select id="categoria" required>
+                     <option value="">Selecione...</option>
+                     <option value="alimentacao">🍽️ Alimentação</option>
+                     <option value="moradia">🏠 Moradia</option>
+                     <option value="transporte">🚗 Transporte</option>
+                     <option value="saude">⚕️ Saúde</option>
+                     <option value="educacao">📚 Educação</option>
+                     <option value="lazer">🎮 Lazer</option>
+                     <option value="contas">📋 Contas e Serviços</option>
+                     <option value="salario">💼 Salário</option>
+                     <option value="investimento">📈 Investimento</option>
+                     <option value="outros">📦 Outros</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="data">Data:</label>
+                  <input type="date" id="data" required>
+               </div>
+            </div>
+            <button type="submit" id="submit-btn">💾 Salvar Transação</button>
+            <button type="button" id="cancel-btn" style="background: #95a5a6; margin-left: 10px; display: none;">
+               ❌ Cancelar
+            </button>
+         </form>
+         <p id="error-message"></p>
+      </div>
+
+      <!-- Resumo Financeiro -->
+      <div
+         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+         <div
+            style="background: rgba(46, 204, 113, 0.1); padding: 20px; border-radius: 15px; text-align: center; border: 2px solid rgba(46, 204, 113, 0.3);">
+            <div style="font-size: 24px; margin-bottom: 5px;">💰</div>
+            <div style="font-size: 14px; color: #27ae60; font-weight: 600;">RECEITAS</div>
+            <div id="total-receitas" style="font-size: 18px; font-weight: bold; color: #27ae60;">R$ 0,00</div>
+         </div>
+         <div
+            style="background: rgba(231, 76, 60, 0.1); padding: 20px; border-radius: 15px; text-align: center; border: 2px solid rgba(231, 76, 60, 0.3);">
+            <div style="font-size: 24px; margin-bottom: 5px;">💸</div>
+            <div style="font-size: 14px; color: #e74c3c; font-weight: 600;">DESPESAS</div>
+            <div id="total-despesas" style="font-size: 18px; font-weight: bold; color: #e74c3c;">R$ 0,00</div>
+         </div>
+         <div
+            style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 15px; text-align: center; border: 2px solid rgba(52, 152, 219, 0.3);">
+            <div style="font-size: 24px; margin-bottom: 5px;">📊</div>
+            <div style="font-size: 14px; color: #3498db; font-weight: 600;">SALDO</div>
+            <div id="saldo" style="font-size: 18px; font-weight: bold; color: #3498db;">R$ 0,00</div>
+         </div>
+      </div>
+
+      <div class="table-container">
+         <h3 style="margin-bottom: 20px; color: #2c3e50;">Histórico de Transações</h3>
+         <table>
+            <thead>
+               <tr>
+                  <th>📅 Data</th>
+                  <th>📝 Descrição</th>
+                  <th>🏷️ Categoria</th>
+                  <th>📊 Tipo</th>
+                  <th>💰 Valor</th>
+                  <th>⚡ Ações</th>
+               </tr>
+            </thead>
+            <tbody id="transactionTable">
+               <!-- As transações serão carregadas aqui via JavaScript -->
+            </tbody>
+         </table>
+      </div>
+   </div>
+
+   <script src="financas.js"></script>
+</body>
+
+</html>
